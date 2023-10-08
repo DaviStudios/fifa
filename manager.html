@@ -13,6 +13,7 @@
             const email = document.getElementById('email').value;
             const clubName = document.getElementById('clubName').value;
             const masterID = document.getElementById('masterID').value;
+            const clubManagerEmail = document.getElementById('clubManagerEmail').value;
             const newPlayerDiscordUsername = document.getElementById('newPlayerDiscordUsername').value;
             const newPlayerEmail = document.getElementById('newPlayerEmail').value;
 
@@ -23,6 +24,7 @@
                          `Email: ${email}\n` +
                          `Club Name: ${clubName}\n` +
                          `MasterID: ${masterID}\n` +
+                         `Club Manager Email: ${clubManagerEmail}\n` +
                          `New Player's Discord Username: ${newPlayerDiscordUsername}\n` +
                          `New Player's Email: ${newPlayerEmail}`
             };
@@ -69,6 +71,9 @@
     <h2>Invite Player to Team</h2>
     <label for="masterID">MasterID:</label>
     <input type="text" id="masterID"><br>
+
+    <label for="clubManagerEmail">Club Manager Email:</label>
+    <input type="text" id="clubManagerEmail"><br>
 
     <label for="newPlayerDiscordUsername">New Player's Discord Username:</label>
     <input type="text" id="newPlayerDiscordUsername"><br>

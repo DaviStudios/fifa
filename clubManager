@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Management</title>
+    <script>
+        function sendWebhookMessage(type) {
+            const webhookUrl = 'https://discord.com/api/webhooks/1157189524280053880/PJyP3E_VcxLi2LU_QV0WFare_BzxJjZi8xXgEVLjtPWyI-UmG6TU6dfBJGO83H4Z1U2e';
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const clubName = document.getElementById('clubName').value;
+            const clubManagerEmail = document.getElementById('clubManagerEmail').value;
+            const newPlayerUsername = document.getElementById('newPlayerUsername').value;
+            const newPlayerEmail = document.getElementById('newPlayerEmail').value;
+
+            const data = {
+                type: type,
+                username: username,
+                email: email,
+                clubName: clubName,
+                clubManagerEmail: clubManagerEmail,
+                newPlayerUsername: newPlayerUsername,
+                newPlayerEmail: newPlayerEmail
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Webhook message sent successfully!');
+                } else {
+                    alert('Failed to send webhook message.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the webhook message.');
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Club Management</h1>
+
+    <h2>Register a Club</h2>
+    <label for="username">Discord Username:</label>
+    <input type="text" id="username"><br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email"><br>
+
+    <label for="clubName">Club Name:</label>
+    <input type="text" id="clubName"><br>
+
+    <button onclick="sendWebhookMessage('Create Team')">Register a Club</button>
+
+    <button onclick="sendWebhookMessage('Forgot MasterID')">Forgot MasterID</button>
+
+    <h2>Invite Player to Team</h2>
+    <label for="newPlayerUsername">New Player's Discord Username:</label>
+    <input type="text" id="newPlayerUsername"><br>
+
+    <label for="newPlayerEmail">New Player's Email:</label>
+    <input type="text" id="newPlayerEmail"><br>
+
+    <label for="clubManagerEmail">Club Manager Email:</label>
+    <input type="text" id="clubManagerEmail"><br>
+
+    <label for="clubName">Club Name:</label>
+    <input type="text" id="clubName"><br>
+
+    <button onclick="sendWebhookMessage('Invite Player to Team')">Invite Player to Team</button>
+</body>
+</html>

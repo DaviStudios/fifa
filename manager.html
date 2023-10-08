@@ -12,7 +12,7 @@
             const discordUsername = document.getElementById('discordUsername').value;
             const email = document.getElementById('email').value;
             const clubName = document.getElementById('clubName').value;
-            const clubManagerEmail = document.getElementById('clubManagerEmail').value;
+            const masterID = document.getElementById('masterID').value;
             const newPlayerDiscordUsername = document.getElementById('newPlayerDiscordUsername').value;
             const newPlayerEmail = document.getElementById('newPlayerEmail').value;
 
@@ -22,7 +22,7 @@
                          `Discord Username: ${discordUsername}\n` +
                          `Email: ${email}\n` +
                          `Club Name: ${clubName}\n` +
-                         `Club Manager Email: ${clubManagerEmail}\n` +
+                         `MasterID: ${masterID}\n` +
                          `New Player's Discord Username: ${newPlayerDiscordUsername}\n` +
                          `New Player's Email: ${newPlayerEmail}`
             };
@@ -62,14 +62,14 @@
     <label for="clubName">Club Name:</label>
     <input type="text" id="clubName"><br>
 
-    <label for="clubManagerEmail">Club Manager Email:</label>
-    <input type="text" id="clubManagerEmail"><br>
-
     <button onclick="sendWebhookMessage('Register a Club')">Register a Club</button>
 
     <button onclick="sendWebhookMessage('Forgot MasterID')">Forgot MasterID</button>
 
     <h2>Invite Player to Team</h2>
+    <label for="masterID">MasterID:</label>
+    <input type="text" id="masterID"><br>
+
     <label for="newPlayerDiscordUsername">New Player's Discord Username:</label>
     <input type="text" id="newPlayerDiscordUsername"><br>
 

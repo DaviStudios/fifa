@@ -8,26 +8,32 @@
         function sendWebhookMessage(type) {
             const webhookUrl = 'https://discord.com/api/webhooks/1157189524280053880/PJyP3E_VcxLi2LU_QV0WFare_BzxJjZi8xXgEVLjtPWyI-UmG6TU6dfBJGO83H4Z1U2e';
 
-            // Get input values
-            const discordUsername = document.getElementById('discordUsername').value;
-            const email = document.getElementById('email').value;
-            const clubName = document.getElementById('clubName').value;
-            const masterID = document.getElementById('masterID').value;
-            const clubManagerEmail = document.getElementById('clubManagerEmail').value;
-            const newPlayerDiscordUsername = document.getElementById('newPlayerDiscordUsername').value;
-            const newPlayerEmail = document.getElementById('newPlayerEmail').value;
-
-            // Create a JSON payload
-            const payload = {
-                content: `Type: ${type}\n` +
-                         `Discord Username: ${discordUsername}\n` +
-                         `Email: ${email}\n` +
-                         `Club Name: ${clubName}\n` +
-                         `MasterID: ${masterID}\n` +
-                         `Club Manager Email: ${clubManagerEmail}\n` +
-                         `New Player's Discord Username: ${newPlayerDiscordUsername}\n` +
-                         `New Player's Email: ${newPlayerEmail}`
-            };
+            // Get input values based on type
+            let payload = {};
+            
+            if (type === 'Register a Club' || type === 'Forgot MasterID') {
+                const discordUsername = document.getElementById('discordUsername').value;
+                const email = document.getElementById('email').value;
+                const clubName = document.getElementById('clubName').value;
+                payload = {
+                    content: `Type: ${type}\n` +
+                             `Discord Username: ${discordUsername}\n` +
+                             `Email: ${email}\n` +
+                             `Club Name: ${clubName}`
+                };
+            } else if (type === 'Invite Player to Team') {
+                const masterID = document.getElementById('masterID').value;
+                const clubManagerEmail = document.getElementById('clubManagerEmail').value;
+                const newPlayerDiscordUsername = document.getElementById('newPlayerDiscordUsername').value;
+                const newPlayerEmail = document.getElementById('newPlayerEmail').value;
+                payload = {
+                    content: `Type: ${type}\n` +
+                             `MasterID: ${masterID}\n` +
+                             `Club Manager Email: ${clubManagerEmail}\n` +
+                             `New Player's Discord Username: ${newPlayerDiscordUsername}\n` +
+                             `New Player's Email: ${newPlayerEmail}`
+                };
+            }
 
             // Send a POST request to the Discord webhook
             fetch(webhookUrl, {

@@ -1,18 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Email Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send to Discord Webhook</title>
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <form action="send_email.php" method="post">
+    <h1>Contact Support</h1>
+    <form id="contactForm">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-
+        <input type="email" id="email" required><br>
         <label for="problem">Your Problem:</label>
-        <textarea id="problem" name="problem" required></textarea><br><br>
-
-        <button type="submit">Send</button>
+        <textarea id="problem" rows="4" required></textarea><br>
+        <button type="button" id="sendButton">Send</button>
     </form>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            const problem = document.getElementById('problem').value;
+            const webhookUrl = 'https://discord.com/api/webhooks/1161179731308331078/7AnOq538kozrQCBs4y_o3v_djVTro29fp2CBsjpTuebx5C7QLojjGwlZ1yE5-Cw0GiBQ';
+
+            const data = {
+                content: `Email: ${email}\nProblem: ${problem}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Message sent successfully!');
+                } else {
+                    alert('Failed to send message. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the message.');
+            });
+        });
+    </script>
 </body>
 </html>

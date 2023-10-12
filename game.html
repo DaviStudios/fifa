@@ -7,7 +7,7 @@
     <style>
         body {
             display: flex;
-            flex-direction: column; /* To stack elements vertically */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -15,11 +15,11 @@
         }
         iframe {
             max-width: 100%;
-            max-height: 80vh; /* Adjust the height as needed */
+            max-height: 80vh;
         }
         #frame-info {
-            background-color: #333; /* Dark grey frame */
-            color: #ccc; /* Light gray text color */
+            background-color: #333;
+            color: #ccc;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -36,11 +36,26 @@
     </style>
 </head>
 <body>
-    <iframe frameborder="0" src="https://v6p9d9t4.ssl.hwcdn.net/html/8873205/index.html" allowfullscreen="" width="640" height="380"></iframe>
+    <iframe id="game-iframe" frameborder="0" src="https://v6p9d9t4.ssl.hwcdn.net/html/8873205/index.html" allowfullscreen="" width="640" height="380"></iframe>
     
     <div id="frame-info">
         <div id="game-title">FIFA87</div>
-        <div id="fullscreen-button">Fullscreen</div>
+        <div id="fullscreen-button" onclick="toggleFullscreen()">Fullscreen</div>
     </div>
+
+    <script>
+        function toggleFullscreen() {
+            const iframe = document.getElementById("game-iframe");
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
+    </script>
 </body>
 </html>

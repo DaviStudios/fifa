@@ -18,11 +18,10 @@
             max-width: 100%;
             max-height: 100vh;
         }
-        #frame-info {
+        #game-info-container {
             background-color: #333;
             color: #ccc;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
@@ -30,7 +29,6 @@
         }
         #game-title {
             font-size: 24px;
-            margin-bottom: 10px;
         }
         #fullscreen-button {
             font-size: 20px;
@@ -40,11 +38,12 @@
 </head>
 <body>
     <div id="frame-container">
-        <div id="frame-info">
+        <iframe id="game-iframe" frameborder="0" src="https://v6p9d9t4.ssl.hwcdn.net/html/8873205/index.html" allowfullscreen="" width="640" height="380"></iframe>
+        
+        <div id="game-info-container">
             <div id="game-title">FIFA87</div>
             <div id="fullscreen-button" onclick="toggleFullscreen()">Fullscreen</div>
         </div>
-        <iframe id="game-iframe" frameborder="0" src="https://v6p9d9t4.ssl.hwcdn.net/html/8873205/index.html" allowfullscreen="" width="640" height="380"></iframe>
     </div>
 
     <script>

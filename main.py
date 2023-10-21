@@ -61,3 +61,4 @@ while True:
 
     if user_input == "exit":
         break
+    execute_code(user_input)

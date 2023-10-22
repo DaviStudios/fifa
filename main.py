@@ -104,9 +104,9 @@ def execute_code(code):
 
 while True:
     try:
-        user_input = input("Enter code: ").encode('utf-8', 'ignore').decode('utf-8')
+        user_input = input(">>> ").encode('utf-8', 'ignore').decode('utf-8')
     except UnicodeDecodeError:
-        user_input = input("Enter code: ")
+        user_input = input(">>> ")
 
     if user_input == "exit":
         break

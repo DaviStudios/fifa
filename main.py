@@ -1,18 +1,21 @@
 variables = {}
 console_output = []
 
+def clear():
+    global console_output
+    console_output.clear()
+
 print("DAVK 1.0.0 RUNNING!")
 print("HOW-TO: http:/davk.kopal-host.xyz")
 
 def execute_code(code):
     code = code.strip()
 
-def clear():
-    global console_output
-    console_output.clear()
-
     if code == "exit":
         return False
+    elif code.startswith("clear()"):
+        clear()
+        return ""
     elif code.startswith("run(") and code.endswith(")"):
         file_expr = code[len("run("):-1].strip()
         if file_expr.endswith(".davk"):
@@ -31,8 +34,6 @@ def clear():
         var_name, var_value = var_expr.split(" = ", 1)
         variables[var_name.strip()] = int(var_value.strip())
         return f"Integer variable {var_name.strip()} set to {var_value.strip()}"
-    elif code.startswith("clear()"):
-        clear()
     elif code.startswith("var str "):
         var_expr = code[len("var str "):]
         var_name, var_value = var_expr.split(' = "', 1)
@@ -109,8 +110,7 @@ def clear():
         try:
             result = eval(code, variables)
             return str(result)
-        except Exception as e:
-            return "Error: invalid"
+    return ""
 
 while True:
     try:
@@ -121,5 +121,8 @@ while True:
     if user_input == "exit":
         break
     result = execute_code(user_input)
-    if result is not None:
-        print(result)
+    if result is not None and result:
+        console_output.append(result)
+
+for line in console_output:
+    print(line)

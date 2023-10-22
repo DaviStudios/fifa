@@ -1,10 +1,15 @@
 variables = {}
+console_output = []
 
 print("DAVK 1.0.0 RUNNING!")
 print("HOW-TO: http:/davk.kopal-host.xyz")
 
 def execute_code(code):
     code = code.strip()
+
+def clear():
+    global console_output
+    console_output.clear()
 
     if code == "exit":
         return False
@@ -26,6 +31,8 @@ def execute_code(code):
         var_name, var_value = var_expr.split(" = ", 1)
         variables[var_name.strip()] = int(var_value.strip())
         return f"Integer variable {var_name.strip()} set to {var_value.strip()}"
+    elif code.startswith("clear()"):
+        clear()
     elif code.startswith("var str "):
         var_expr = code[len("var str "):]
         var_name, var_value = var_expr.split(' = "', 1)

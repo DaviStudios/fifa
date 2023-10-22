@@ -82,8 +82,8 @@ def execute_code(code):
             return variables[message]
         else:
             return message
-    elif code.startswith("file_write(") and code.endswith(")"):
-        file_expr = code[len("file_write("):-1].strip()
+    elif code.startswith("write(") and code.endswith(")"):
+        file_expr = code[len("write("):-1].strip()
         file_name, file_content = file_expr.split(" = ", 1)
         with open(file_name.strip(), "w") as file:
             file.write(file_content.strip())

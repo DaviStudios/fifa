@@ -1,5 +1,8 @@
 variables = {}
 
+print("DAVK 1.0.0 RUNNING!")
+print("HOW-TO: http:/davk.kopal-host.xyz")
+
 def execute_code(code):
     code = code.strip()
 
@@ -104,9 +107,9 @@ def execute_code(code):
 
 while True:
     try:
-        user_input = input(">>> ").encode('utf-8', 'ignore').decode('utf-8')
+        user_input = input("DAVK> ").encode('utf-8', 'ignore').decode('utf-8')
     except UnicodeDecodeError:
-        user_input = input(">>> ")
+        user_input = input("DAVK> ")
 
     if user_input == "exit":
         break
